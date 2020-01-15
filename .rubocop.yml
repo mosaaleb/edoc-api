@@ -9,9 +9,11 @@ AllCops:
     - "config/*/*"
     - "Guardfile"
     - "Rakefile"
+    - "spec/rails_helper.rb"
+    - "spec/spec_helper.rb"
   DisplayCopNames: true
 Style/Documentation:
   Enabled: false
 Style/ClassAndModuleChildren:
   Enabled: true
-  EnforcedStyle: compact
+  # EnforcedStyle: compact
