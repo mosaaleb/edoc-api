@@ -13,10 +13,10 @@ class JsonWebToken
 
   def self.decode(token)
     # get payload; first index in decoded Array
-    body = JWT.decode(token, HMAC_SECRET)[0]
-    HashWithIndifferentAccess.new body
+    payload = JWT.decode(token, HMAC_SECRET)[0]
+    HashWithIndifferentAccess.new payload
     # rescue from all decode errors
-  rescue StandardError
-    nil
+  rescue JWT::DecodeError => e
+    raise ExceptionHandler::InvalidToken, e.message
   end
 end

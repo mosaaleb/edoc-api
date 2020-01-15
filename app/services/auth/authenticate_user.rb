@@ -22,6 +22,6 @@ class AuthenticateUser
     account = Account.find_by(email: email)
     return account if account&.authenticate(password)
 
-    raise(ExceptionHandler::AuthenticationError, /Invalid Credentials/)
+    raise ExceptionHandler::AuthenticationError, /Invalid Credentials/
   end
 end
