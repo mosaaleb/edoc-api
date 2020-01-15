@@ -1,0 +1,17 @@
+require:
+- rubocop-rails
+- rubocop-rspec
+
+AllCops:
+  Exclude:
+    - "bin/*"
+    - "db/*"
+    - "config/*/*"
+    - "Guardfile"
+    - "Rakefile"
+  DisplayCopNames: true
+Style/Documentation:
+  Enabled: false
+Style/ClassAndModuleChildren:
+  Enabled: true
+  EnforcedStyle: compact
