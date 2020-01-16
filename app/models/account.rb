@@ -5,6 +5,5 @@ class Account < ApplicationRecord
 
   validates :email,
             :first_name,
-            :last_name,
-            :password_digest, presence: true
+            :last_name, presence: true
 end
