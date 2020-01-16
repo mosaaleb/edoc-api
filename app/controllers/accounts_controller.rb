@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class AccountsController < ApplicationController
+  skip_before_action :authorize_request
+
   def create
     account = Account.new(account_params)
 

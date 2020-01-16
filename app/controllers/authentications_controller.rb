@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class AuthenticationsController < ApplicationController
+  skip_before_action :authorize_request
+
   def authenticate
     auth_token = AuthenticateUser
                  .call(auth_params[:email], auth_params[:password])
