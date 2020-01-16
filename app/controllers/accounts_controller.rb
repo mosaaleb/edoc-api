@@ -2,14 +2,16 @@
 
 class AccountsController < ApplicationController
   def create
-    account = Account.create!(account_params)
+    account = Account.new(account_params)
 
-    auth_token = AuthenticateUser.call(account.email, account.password)
-    res = { message: 'Account Created Successfully', auth_token: auth_token }
-    render json: res, status: :created
-  rescue ActiveRecord::RecordInvalid => e
-    render json: { message: e },
-           status: :bad_request
+    if account.save
+      auth_token = AuthenticateUser.call(account.email, account.password)
+      res = { message: 'Account Created Successfully', auth_token: auth_token }
+      render json: res, status: :created
+    else
+      render json: { message: account.errors.full_messages },
+             status: :bad_request
+    end
   end
 
   def account_params
