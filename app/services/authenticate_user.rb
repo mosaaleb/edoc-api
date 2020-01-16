@@ -3,13 +3,13 @@
 class AuthenticateUser
   attr_reader :email, :password
 
-  def self.call(account)
-    new(account).call
+  def self.call(email, password)
+    new(email, password).call
   end
 
-  def initialize(account)
-    @email = account.email
-    @password = account.password
+  def initialize(email, password)
+    @email = email
+    @password = password
   end
 
   def call

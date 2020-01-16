@@ -23,5 +23,5 @@ Style/Documentation:
   Enabled: false
 
 Style/ClassAndModuleChildren:
-  Enabled: true
+  Enabled: false
   # EnforcedStyle: compact

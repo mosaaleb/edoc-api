@@ -3,7 +3,7 @@
 # TODO: refactor and move helper methods to support
 
 require 'rails_helper'
-require './app/services/auth/authorize_api_request.rb'
+require './app/services/authorize_api_request.rb'
 
 RSpec.describe AuthorizeApiRequest do
   let(:account) { create :account }
