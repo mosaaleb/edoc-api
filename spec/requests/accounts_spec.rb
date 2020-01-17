@@ -10,20 +10,24 @@ RSpec.describe 'Accounts', type: :request do
   end
   let(:valid_attributes) do
     {
-      email: Faker::Internet.unique.email,
-      first_name: Faker::Name.name,
-      last_name: Faker::Name.name,
-      password: '123456',
-      password_confirmation: '123456'
+      account: {
+        email: Faker::Internet.unique.email,
+        first_name: Faker::Name.name,
+        last_name: Faker::Name.name,
+        password: '123456',
+        password_confirmation: '123456'
+      }
     }.to_json
   end
   let(:invalid_attributes) do
     {
-      email: Faker::Internet.unique.email,
-      first_name: Faker::Name.name,
-      last_name: Faker::Name.name,
-      password: '',
-      password_confirmation: '123456'
+      account: {
+        email: Faker::Internet.unique.email,
+        first_name: Faker::Name.name,
+        last_name: Faker::Name.name,
+        password: '',
+        password_confirmation: '123456'
+      }
     }.to_json
   end
 
