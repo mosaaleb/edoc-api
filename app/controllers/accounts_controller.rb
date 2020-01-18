@@ -4,17 +4,18 @@ class AccountsController < ApplicationController
   skip_before_action :authorize_request
 
   def create
-    account = Account.new(account_params)
+    account = Account.create!(account_params)
 
-    if account.save
-      auth_token = AuthenticateUser.call(account.email, account.password)
-      res = { message: 'Account Created Successfully', auth_token: auth_token }
-      render json: res, status: :created
-    else
-      render json: { message: account.errors.full_messages },
-             status: :bad_request
-    end
+    auth_token = AuthenticateUser.call(account.email, account.password)
+    res = {
+      auth_token: auth_token,
+      current_user: account.name_and_id,
+      message: 'Account Created Successfully'
+    }
+    render json: res, status: :created
   end
+
+  private
 
   def account_params
     params.require(:account).permit(:email,

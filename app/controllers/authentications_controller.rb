@@ -6,12 +6,22 @@ class AuthenticationsController < ApplicationController
   def authenticate
     auth_token = AuthenticateUser
                  .call(auth_params[:email], auth_params[:password])
-    render json: { auth_token: auth_token }
-  rescue ExceptionHandler::AuthenticationError => e
-    render json: { message: e }, status: :unauthorized
+
+    res = {
+      auth_token: auth_token,
+      current_user: account.name_and_id,
+      message: 'You have successfully signed in.'
+    }
+    render json: res
   end
 
+  private
+
   def auth_params
-    params.permit(:email, :password)
+    params.require(:authentication).permit(:email, :password)
+  end
+
+  def account
+    Account.find_by(email: auth_params[:email])
   end
 end

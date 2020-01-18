@@ -36,7 +36,10 @@ RSpec.describe 'Accounts', type: :request do
       before { post '/accounts', params: valid_attributes, headers: headers }
 
       it { expect(response).to have_http_status(:created) }
-      it { expect(json.keys).to match_array(%w[message auth_token]) }
+
+      it do
+        expect(json.keys).to match_array(%w[auth_token current_user message])
+      end
     end
 
     context 'with invalid account attributes' do

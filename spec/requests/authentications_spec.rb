@@ -30,7 +30,10 @@ RSpec.describe 'Authentications', type: :request do
       end
 
       it { expect(response).to have_http_status(:ok) }
-      it { expect(json.keys).to match_array(['auth_token']) }
+
+      it do
+        expect(json.keys).to match_array(%w[auth_token current_user message])
+      end
     end
 
     context 'with invalid credentials' do
