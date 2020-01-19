@@ -4,7 +4,9 @@ class AccountsController < ApplicationController
   skip_before_action :authorize_request
 
   def create
-    account = Account.create!(account_params)
+    account = Account.new(account_params)
+    account.role = Patient.new
+    account.save!
 
     auth_token = AuthenticateUser.call(account.email, account.password)
     res = {
