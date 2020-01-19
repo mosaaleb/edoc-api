@@ -9,7 +9,7 @@ class AccountsController < ApplicationController
     auth_token = AuthenticateUser.call(account.email, account.password)
     res = {
       auth_token: auth_token,
-      current_user: account.name_and_id,
+      current_user: account.id_and_name_and_role,
       message: 'Account Created Successfully'
     }
     render json: res, status: :created
