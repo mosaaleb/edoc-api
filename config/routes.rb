@@ -5,4 +5,8 @@ Rails.application.routes.draw do
   resources :accounts, only: [:create]
   resources :doctors, only: %i[index show]
   resources :specialities, only: [:index]
+
+  resources :specialities do
+    resources :doctors, only: [:index]
+  end
 end
