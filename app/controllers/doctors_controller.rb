@@ -2,7 +2,7 @@
 
 class DoctorsController < ApplicationController
   def index
-    render json: doctors
+    render json: doctors.to_json(only: %i[id first_name last_name])
   end
 
   def show
@@ -17,8 +17,8 @@ class DoctorsController < ApplicationController
   end
 
   def doctors
-    return Doctor.all unless params[:speciality_id]
+    return Account.doctors unless params[:speciality_id]
 
-    Doctor.find_by(speciality_id: params[:speciality_id])
+    Account.doctors_special_in(params[:speciality_id])
   end
 end
