@@ -33,6 +33,6 @@ class AuthorizeApiRequest
   def token
     return headers['Authorization'].split.last if headers['Authorization']
 
-    raise ExceptionHandler::MissingToken, /Missing Token/
+    raise ExceptionHandler::MissingToken, 'Missing Token'
   end
 end

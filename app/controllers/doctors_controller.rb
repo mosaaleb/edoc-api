@@ -2,7 +2,7 @@
 
 class DoctorsController < ApplicationController
   def index
-    render json: doctors.to_json(only: %i[id first_name last_name])
+    render json: doctors.to_json(only: %i[id first_name last_name speciality])
   end
 
   def show

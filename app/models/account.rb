@@ -32,6 +32,7 @@ class Account < ApplicationRecord
     Account.doctors
            .joins(custom_join)
            .merge(Speciality.special_in_id(speciality_id))
+           .select('accounts.*, specialities.speciality')
   end
 
   # instance methods
