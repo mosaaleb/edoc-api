@@ -1,16 +1,10 @@
 # frozen_string_literal: true
 
 class Doctor < ApplicationRecord
-  enum speciality: { 'General Doctor' => 0,
-                     'Skin & Hair' => 1,
-                     'Child Care' => 2,
-                     'Women\'s Health' => 3,
-                     'Dentist' => 4,
-                     'ENT' => 5, '
-                      Homeopathy' => 6,
-                     'Ayurveda' => 7 }
-
+  belongs_to :speciality
   has_one :account, as: :role, dependent: :destroy
 
-  validates :speciality, presence: true
+  def self.special_in(speciality)
+    joins(:speciality).where(specialities: { name: speciality })
+  end
 end
