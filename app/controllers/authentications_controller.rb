@@ -9,7 +9,7 @@ class AuthenticationsController < ApplicationController
 
     res = {
       auth_token: auth_token,
-      current_user: account.name_and_id,
+      current_user: account.id_and_name_and_role,
       message: 'You have successfully signed in.'
     }
     render json: res

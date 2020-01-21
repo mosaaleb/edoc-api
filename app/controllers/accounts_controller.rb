@@ -4,14 +4,13 @@ class AccountsController < ApplicationController
   skip_before_action :authorize_request
 
   def create
-    account = Account.new(account_params)
-    account.role = Patient.new
-    account.save!
+    account = Account.create!(account_params
+                              .merge!(role: Patient.create))
 
     auth_token = AuthenticateUser.call(account.email, account.password)
     res = {
       auth_token: auth_token,
-      current_user: account.id_and_name_and_role,
+      current_user: account.id_and_name,
       message: 'Account Created Successfully'
     }
     render json: res, status: :created
