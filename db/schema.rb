@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_20_220303) do
+ActiveRecord::Schema.define(version: 2020_01_21_010735) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,6 +25,17 @@ ActiveRecord::Schema.define(version: 2020_01_20_220303) do
     t.string "role_type", null: false
     t.bigint "role_id", null: false
     t.index ["role_type", "role_id"], name: "index_accounts_on_role_type_and_role_id"
+  end
+
+  create_table "appointments", force: :cascade do |t|
+    t.datetime "date"
+    t.bigint "doctor_id", null: false
+    t.bigint "patient_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["doctor_id", "patient_id"], name: "index_appointments_on_doctor_id_and_patient_id", unique: true
+    t.index ["doctor_id"], name: "index_appointments_on_doctor_id"
+    t.index ["patient_id"], name: "index_appointments_on_patient_id"
   end
 
   create_table "doctors", force: :cascade do |t|
@@ -45,5 +56,7 @@ ActiveRecord::Schema.define(version: 2020_01_20_220303) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "appointments", "doctors"
+  add_foreign_key "appointments", "patients"
   add_foreign_key "doctors", "specialities"
 end
