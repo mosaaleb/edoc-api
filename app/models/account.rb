@@ -45,10 +45,6 @@ class Account < ApplicationRecord
   end
 
   # instance methods
-  def id_and_name
-    as_json(only: %i[role_id first_name last_name])
-  end
-
   def full_name
     "#{first_name} #{last_name}"
   end
