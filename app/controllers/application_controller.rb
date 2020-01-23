@@ -8,6 +8,7 @@ class ApplicationController < ActionController::API
   private
 
   def authorize_request
-    @current_user = AuthorizeApiRequest.call(request.headers)
+    account = AuthorizeApiRequest.call(request.headers)
+    @current_user = Patient.find(account.role_id)
   end
 end
