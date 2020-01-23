@@ -10,5 +10,6 @@ class Patient < ApplicationRecord
   delegate :email,
            :first_name,
            :last_name,
+           :full_name,
            :password, to: :account
 end

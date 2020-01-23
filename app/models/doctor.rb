@@ -9,4 +9,10 @@ class Doctor < ApplicationRecord
   def self.special_in(speciality)
     joins(:speciality).where(specialities: { name: speciality })
   end
+
+  delegate :email,
+           :first_name,
+           :last_name,
+           :full_name,
+           :password, to: :account
 end

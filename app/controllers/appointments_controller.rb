@@ -1,13 +1,11 @@
 # frozen_string_literal: true
 
 class AppointmentsController < ApplicationController
-  skip_before_action :authorize_request
-
   def create
-    Appointment.create!(appointment_params)
+    current_user.appointments.create!(appointment_params)
 
     res = {
-      message: "Appointment with Doctor #{doctor_name}"
+      message: "Appointment with Doctor #{doctor_name} is scheduled"
     }
 
     render json: res, status: :created
@@ -16,10 +14,10 @@ class AppointmentsController < ApplicationController
   private
 
   def appointment_params
-    params.require(:appointment).permit(:patient_id, :doctor_id, :date)
+    params.require(:appointment).permit(:doctor_id, :date)
   end
 
   def doctor_name
-    Doctor.find(params[:appointment][:doctor_id]).account.full_name
+    Doctor.find(params[:appointment][:doctor_id]).full_name
   end
 end
