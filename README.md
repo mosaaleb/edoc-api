@@ -1,24 +1,47 @@
-# README
+# Edoc-api
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Introduction
+This is part of two part project in [Microverse](https://www.microverse.org/) curriculum
+The project handle searching physicians by their speciality and handles creating appointments with patients.
 
-Things you may want to cover:
+It serves front end react application
+react app: [edoc](https://github.com/mosaaleb/edoc/)
 
-* Ruby version
+**Features**
+- Authentication with JWT
+- Filtering physicians by category
+- Creating appointments with physicians
+- Mobile app
 
-* System dependencies
+## Built With
+- Rails 6.0.2
 
-* Configuration
+### Prerequisites
+- ruby 2.6.3
+- bundle
 
-* Database creation
+### Setup
+```
+git clone git@github.com:mosaaleb/edoc-api.git
+cd edoc
+rails db:create db:migrate db:seed
+```
 
-* Database initialization
 
-* How to run the test suite
+## Author
 
-* Services (job queues, cache servers, search engines, etc.)
+👤 **Author1**
 
-* Deployment instructions
+- Github: [@githubhandle](https://github.com/mosaaleb)
+- Twitter: [@twitterhandle](https://twitter.com/muhammadebeid)
+- Linkedin: [linkedin](https://www.linkedin.com/in/muhammadebeid/)
 
-* ...
+## 🤝 Contributing
+
+Contributions, issues and feature requests are welcome!
+
+Feel free to check the [issues page](issues/).
+
+
+## 📝 License
+This project is [MIT](lic.url) licensed.
