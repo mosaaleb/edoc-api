@@ -6,13 +6,16 @@ class Doctor < ApplicationRecord
   has_many :appointments, dependent: :destroy
   has_many :patients, through: :appointments
 
-  def self.special_in(speciality)
-    joins(:speciality).where(specialities: { name: speciality })
-  end
-
   delegate :email,
            :first_name,
            :last_name,
            :full_name,
            :password, to: :account
+
+  # class methods
+  def self.special_in(speciality = nil)
+    return all unless speciality
+
+    joins(:speciality).merge(Speciality.special_in(speciality))
+  end
 end

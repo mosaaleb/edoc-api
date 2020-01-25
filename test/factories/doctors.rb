@@ -2,6 +2,18 @@
 
 FactoryBot.define do
   factory :doctor do
-    association :account, strategy: :create
+    association :speciality, strategy: :create
+
+    after :create do |doctor|
+      create :account, role: doctor
+    end
+
+    factory :general_doctor do
+      association :speciality, speciality: 'General Doctor', strategy: :create
+
+      after :create do |doctor|
+        create :account, role: doctor
+      end
+    end
   end
 end
