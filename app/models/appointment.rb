@@ -5,5 +5,5 @@ class Appointment < ApplicationRecord
   belongs_to :patient
 
   validates :date, presence: true
-  validates :doctor, uniqueness: { scope: :patient }
+  validates :doctor, uniqueness: { scope: :patient_id }
 end
