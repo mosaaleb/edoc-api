@@ -8,6 +8,8 @@ RSpec.describe Doctor, type: :model do
     it { is_expected.to have_one(:account) }
     it { is_expected.to have_many(:appointments) }
     it { is_expected.to have_many(:patients).through(:appointments) }
+    it { is_expected.to have_many(:likes) }
+    it { is_expected.to have_many(:liker_patients).through(:likes) }
   end
 
   describe 'delegations' do
@@ -16,6 +18,18 @@ RSpec.describe Doctor, type: :model do
     it { is_expected.to delegate_method(:last_name).to(:account) }
     it { is_expected.to delegate_method(:full_name).to(:account) }
     it { is_expected.to delegate_method(:password).to(:account) }
+  end
+
+  describe '#liker_patients' do
+    let(:doctor) { create(:doctor_with_likes, likes_count: 10) }
+
+    it 'return all patients who liked a doctor' do
+      expect(doctor.liker_patients.count).to eq(10)
+    end
+
+    it 'return number of likes that the doctor have' do
+      expect(doctor.likes.count).to eq(10)
+    end
   end
 
   describe '::special_in' do

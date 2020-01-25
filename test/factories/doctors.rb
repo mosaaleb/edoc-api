@@ -4,12 +4,18 @@ FactoryBot.define do
   factory :doctor do
     association :speciality, strategy: :build
 
-    factory :general_doctor do
-      association :speciality, speciality: 'General Doctor', strategy: :build
+    factory :doctor_with_likes do
+      transient do
+        likes_count { 5 }
+      end
 
-      after :create do |doctor|
-        create :account, role: doctor
+      after :create do |doctor, evaluator|
+        create_list(:doctor_like, evaluator.likes_count, doctor: doctor)
       end
     end
+  end
+
+  factory :general_doctor, class: :Doctor do
+    association :speciality, speciality: 'General Doctor', strategy: :build
   end
 end

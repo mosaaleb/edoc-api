@@ -5,6 +5,8 @@ class Doctor < ApplicationRecord
   has_one :account, as: :role, dependent: :destroy
   has_many :appointments, dependent: :destroy
   has_many :patients, through: :appointments
+  has_many :likes, class_name: :DoctorLike, dependent: :destroy
+  has_many :liker_patients, through: :likes, source: :patient
 
   delegate :email,
            :first_name,
