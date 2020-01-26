@@ -10,6 +10,8 @@ RSpec.describe Doctor, type: :model do
     it { is_expected.to have_many(:patients).through(:appointments) }
     it { is_expected.to have_many(:likes) }
     it { is_expected.to have_many(:liker_patients).through(:likes) }
+    it { is_expected.to have_many(:reviews) }
+    it { is_expected.to have_many(:reviewer_patients).through(:reviews) }
   end
 
   describe 'delegations' do

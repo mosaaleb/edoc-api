@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_25_125922) do
+ActiveRecord::Schema.define(version: 2020_01_26_052908) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,6 +49,17 @@ ActiveRecord::Schema.define(version: 2020_01_25_125922) do
     t.index ["patient_id"], name: "index_doctor_likes_on_patient_id"
   end
 
+  create_table "doctor_reviews", force: :cascade do |t|
+    t.bigint "patient_id", null: false
+    t.bigint "doctor_id", null: false
+    t.text "review"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["doctor_id", "patient_id"], name: "index_doctor_reviews_on_doctor_id_and_patient_id", unique: true
+    t.index ["doctor_id"], name: "index_doctor_reviews_on_doctor_id"
+    t.index ["patient_id"], name: "index_doctor_reviews_on_patient_id"
+  end
+
   create_table "doctors", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -71,5 +82,7 @@ ActiveRecord::Schema.define(version: 2020_01_25_125922) do
   add_foreign_key "appointments", "patients"
   add_foreign_key "doctor_likes", "doctors"
   add_foreign_key "doctor_likes", "patients"
+  add_foreign_key "doctor_reviews", "doctors"
+  add_foreign_key "doctor_reviews", "patients"
   add_foreign_key "doctors", "specialities"
 end
