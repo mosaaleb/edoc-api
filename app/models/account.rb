@@ -12,6 +12,7 @@ class Account < ApplicationRecord
 
   # associations
   belongs_to :role, polymorphic: true
+  has_one_attached :avatar
 
   # class methods
   def self.doctors
