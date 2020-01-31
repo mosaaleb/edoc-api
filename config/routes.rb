@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  get 'appointments/create'
   post 'authenticate', to: 'authentications#authenticate'
   resources :doctors, only: %i[index show]
   resources :specialities, only: [:index]
@@ -11,5 +10,5 @@ Rails.application.routes.draw do
   end
 
   resources :patients, only: [:create]
-  resources :appointments, only: [:create]
+  resources :appointments, only: %i[index create]
 end
