@@ -11,6 +11,14 @@ class AppointmentsController < ApplicationController
     render json: res, status: :created
   end
 
+  def index
+    # TODO: change currentuser to currentuser
+    current_user = Patient.first
+    appointments = current_user.appointments
+
+    render json: appointments, include: ['doctor.account', 'doctor.speciality']
+  end
+
   private
 
   def appointment_params
