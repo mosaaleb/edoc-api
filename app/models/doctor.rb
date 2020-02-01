@@ -23,9 +23,7 @@ class Doctor < ApplicationRecord
   has_many :reviewer_patients, through: :reviews, source: :patient
 
   # class methods
-  def self.special_in(speciality = nil)
-    return all unless speciality
-
+  def self.special_in(speciality)
     joins(:speciality).merge(Speciality.special_in(speciality))
   end
 end
