@@ -9,7 +9,13 @@ class DoctorsController < ApplicationController
 
   private
 
+  def query_params
+    params.permit(:speciality, :name,
+                  :fees_from, :fees_to,
+                  :experience_from, :experience_to)
+  end
+
   def doctors
-    Doctor.special_in(params[:speciality])
+    SearchDoctors.call(Doctor.all, query_params)
   end
 end
