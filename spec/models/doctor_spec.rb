@@ -5,6 +5,7 @@ require 'rails_helper'
 RSpec.describe Doctor, type: :model do
   describe 'validations' do
     it { is_expected.to validate_presence_of(:years_of_experience) }
+    it { is_expected.to validate_presence_of(:fees) }
   end
 
   describe 'associations' do

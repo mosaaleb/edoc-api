@@ -2,7 +2,8 @@
 
 class Doctor < ApplicationRecord
   # validations
-  validates :years_of_experience, presence: true
+  validates :fees,
+            :years_of_experience, presence: true
 
   # delegations
   delegate :email,

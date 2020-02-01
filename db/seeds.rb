@@ -21,7 +21,9 @@ p "\n Specialities created \n"
 ActiveRecord::Base.connection.reset_pk_sequence!('doctors')
 (1..80).each do |i|
   id = (i % 10) == 0 ? 10 : (i % 10)
-  Doctor.create!(speciality_id: id, years_of_experience: Faker::Number.within(range: 1..20))
+  Doctor.create!(speciality_id: id, 
+                 fees: Faker::Number.within(range: 100..300),
+                 years_of_experience: Faker::Number.within(range: 1..20))
 end
 p "\n Doctors created \n"
 
