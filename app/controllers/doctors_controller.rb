@@ -5,12 +5,11 @@ class DoctorsController < ApplicationController
 
   def index
     render json: doctors
-      .to_json(only: %i[role_id first_name last_name speciality])
   end
 
   private
 
   def doctors
-    Account.doctors_special_in(params[:speciality_id])
+    Doctor.special_in(params[:speciality])
   end
 end

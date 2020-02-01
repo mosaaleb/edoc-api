@@ -12,11 +12,9 @@ class AppointmentsController < ApplicationController
   end
 
   def index
-    # TODO: change currentuser to currentuser
-    current_user = Patient.first
     appointments = current_user.appointments
 
-    render json: appointments, include: ['doctor.account', 'doctor.speciality']
+    render json: appointments
   end
 
   private
