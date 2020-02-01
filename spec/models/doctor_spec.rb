@@ -3,6 +3,10 @@
 require 'rails_helper'
 
 RSpec.describe Doctor, type: :model do
+  describe 'validations' do
+    it { is_expected.to validate_presence_of(:years_of_experience) }
+  end
+
   describe 'associations' do
     it { is_expected.to belong_to(:speciality) }
     it { is_expected.to have_one(:account) }

@@ -1,6 +1,16 @@
 # frozen_string_literal: true
 
 class Doctor < ApplicationRecord
+  # validations
+  validates :years_of_experience, presence: true
+
+  # delegations
+  delegate :email,
+           :first_name,
+           :last_name,
+           :full_name,
+           :password, to: :account
+
   # associations
   belongs_to :speciality
   has_one :account, as: :role, dependent: :destroy
@@ -10,13 +20,6 @@ class Doctor < ApplicationRecord
   has_many :liker_patients, through: :likes, source: :patient
   has_many :reviews, class_name: :DoctorReview, dependent: :destroy
   has_many :reviewer_patients, through: :reviews, source: :patient
-
-  # delegations
-  delegate :email,
-           :first_name,
-           :last_name,
-           :full_name,
-           :password, to: :account
 
   # class methods
   def self.special_in(speciality = nil)
