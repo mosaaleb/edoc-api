@@ -26,4 +26,9 @@ class Doctor < ApplicationRecord
   def self.special_in(speciality)
     joins(:speciality).merge(Speciality.special_in(speciality))
   end
+
+  def self.search_with_name(name)
+    joins(:account)
+      .where('accounts.first_name = ? OR accounts.last_name = ?', name, name)
+  end
 end

@@ -12,6 +12,8 @@ class SearchDoctors
     @search_params = search_params
   end
 
+  # TODO: refactor assignment branch condition
+
   def call
     scoped = filter_by_speciality(initial_scope, search_params[:speciality])
     scoped = filter_by_name(scoped, search_params[:name])
@@ -30,7 +32,7 @@ class SearchDoctors
   end
 
   def filter_by_name(scoped, name = nil)
-    name ? scoped.where(first_name: name).or(where(last_name: name)) : scoped
+    name ? scoped.search_with_name(name) : scoped
   end
 
   def filter_by_fees(scoped, from = nil, to = nil)

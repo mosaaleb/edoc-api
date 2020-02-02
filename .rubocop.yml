@@ -25,3 +25,6 @@ Style/Documentation:
 Style/ClassAndModuleChildren:
   Enabled: false
   # EnforcedStyle: compact
+
+Metrics/AbcSize:
+  Enabled: false
