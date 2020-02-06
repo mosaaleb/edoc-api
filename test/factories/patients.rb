@@ -2,6 +2,8 @@
 
 FactoryBot.define do
   factory :patient do
-    # association :account, strategy: :build
+  end
+  factory :patient_with_account, class: :Patient do
+    association :account, strategy: :build
   end
 end

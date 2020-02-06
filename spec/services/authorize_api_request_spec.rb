@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-# TODO: refactor and move helper methods to support
-
 require 'rails_helper'
 require './app/services/authorize_api_request.rb'
 
