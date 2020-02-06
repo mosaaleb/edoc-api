@@ -40,12 +40,7 @@ RSpec.describe Doctor, type: :model do
   end
 
   describe '::special_in' do
-    let(:doctors) { create_list(:doctor, 5) }
     let(:general_doctors) { create_list(:general_doctor, 5) }
-
-    it 'returns all doctors if speciality is not defined' do
-      expect(described_class.special_in).to eq(doctors)
-    end
 
     it 'returns all doctors with specific speciality' do
       expect(described_class.special_in('General Doctor'))

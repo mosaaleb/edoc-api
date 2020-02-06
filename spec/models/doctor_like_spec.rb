@@ -14,5 +14,3 @@ RSpec.describe DoctorLike, type: :model do
     it { is_expected.to validate_uniqueness_of(:doctor).scoped_to(:patient_id) }
   end
 end
-
-# ISSUE: https://github.com/thoughtbot/shoulda-matchers/issues/814
