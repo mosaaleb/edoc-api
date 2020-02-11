@@ -4,7 +4,7 @@ require 'rails_helper'
 require './app/services/authorize_api_request.rb'
 
 RSpec.describe AuthorizeApiRequest do
-  let(:account) { create :account }
+  let(:account) { create(:account, :for_patient) }
   let(:headers) do
     {
       'Authorization' => "Bearer #{JsonWebToken.encode(account_id: account.id)}"

@@ -4,8 +4,8 @@ require 'rails_helper'
 require './app/services/authenticate_user.rb'
 
 RSpec.describe AuthenticateUser do
-  let(:account) { create :account }
-  let(:no_account) { build :account }
+  let(:account) { create(:account, :for_patient) }
+  let(:no_account) { build(:account, :for_patient) }
 
   describe '#call' do
     context 'when valid credentials' do
