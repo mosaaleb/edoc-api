@@ -3,7 +3,7 @@
 FactoryBot.define do
   factory :appointment do
     date { Time.zone.now }
-    association :doctor, strategy: :build
-    association :patient, strategy: :build
+    association :doctor, factory: :doctor_with_account, strategy: :build
+    association :patient, factory: :patient_with_account, strategy: :build
   end
 end

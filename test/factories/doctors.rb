@@ -13,6 +13,10 @@ FactoryBot.define do
         create_list(:doctor_like, evaluator.likes_count, doctor: doctor)
       end
     end
+
+    factory :doctor_with_account do
+      association :account, strategy: :build
+    end
   end
 
   factory :general_doctor, class: :Doctor do

@@ -12,8 +12,6 @@ class SearchDoctors
     @search_params = search_params
   end
 
-  # TODO: refactor assignment branch condition
-
   def call
     scoped = filter_by_speciality(initial_scope, search_params[:speciality])
     scoped = filter_by_name(scoped, search_params[:name])

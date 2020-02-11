@@ -9,11 +9,17 @@ RSpec.describe Appointment, type: :model do
   end
 
   describe 'validations' do
-    subject do
+    subject(:appointment) do
       FactoryBot.build(:appointment)
     end
 
     it { is_expected.to validate_presence_of(:date) }
-    it { is_expected.to validate_uniqueness_of(:doctor).scoped_to(:patient_id) }
+
+    it do
+      expect(appointment).to validate_uniqueness_of(:doctor)
+        .scoped_to(:patient_id)
+        .with_message("Can't have another appointment with Dr.#{appointment
+          .doctor.full_name}")
+    end
   end
 end
