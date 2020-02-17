@@ -1,11 +1,9 @@
 # frozen_string_literal: true
 
-# TODO: resuse support methods for generating headers
-
 require 'rails_helper'
 
 RSpec.describe 'Authentications', type: :request do
-  let(:account) { create :account }
+  let(:account) { create(:account, :for_patient) }
   let(:headers) do
     { 'CONTENT_TYPE' => 'application/json', 'ACCEPT' => 'application/json' }
   end

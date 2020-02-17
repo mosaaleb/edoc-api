@@ -31,3 +31,17 @@
 
 en:
   hello: "Hello world"
+
+  faker:
+    speciality:
+      name:
+        - General Doctor
+        - Skin & Hair
+        - Child Care
+        - Women\'s Health
+        - Dentist
+        - ENT
+        - Homeopathy
+        - Ayurveda
+        - Cardiac
+        - Psychiatry

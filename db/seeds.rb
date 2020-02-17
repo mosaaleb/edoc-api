@@ -6,42 +6,34 @@
 require 'faker'
 
 ActiveRecord::Base.connection.reset_pk_sequence!('specialities')
-specialities = Speciality.create([{ name: 'General Doctor' },
-                                  { name: 'Skin & Hair' },
-                                  { name: 'Child Care' },
-                                  { name: 'Women\'s Health' },
-                                  { name: 'Dentist' },
-                                  { name: 'ENT' },
-                                  { name: 'Homeopathy' },
-                                  { name: 'Ayurveda' },
-                                  { name: 'Cardiac' },
-                                  { name: 'Psychiatry' }])
+specialities = Speciality.create!([{ speciality: 'General Doctor' },
+                                  { speciality: 'Skin & Hair' },
+                                  { speciality: 'Child Care' },
+                                  { speciality: 'Women\'s Health' },
+                                  { speciality: 'Dentist' },
+                                  { speciality: 'ENT' },
+                                  { speciality: 'Homeopathy' },
+                                  { speciality: 'Ayurveda' },
+                                  { speciality: 'Cardiac' },
+                                  { speciality: 'Psychiatry' }])
+p "\n Specialities created \n"
 
 ActiveRecord::Base.connection.reset_pk_sequence!('doctors')
-doctors = Doctor.create([{ speciality_id: Speciality.find(1).id },
-                         { speciality_id: Speciality.find(2).id },
-                         { speciality_id: Speciality.find(3).id },
-                         { speciality_id: Speciality.find(4).id },
-                         { speciality_id: Speciality.find(5).id },
-                         { speciality_id: Speciality.find(6).id },
-                         { speciality_id: Speciality.find(7).id },
-                         { speciality_id: Speciality.find(8).id },
-                         { speciality_id: Speciality.find(9).id },
-                         { speciality_id: Speciality.find(10).id }])
+(1..80).each do |i|
+  id = (i % 10) == 0 ? 10 : (i % 10)
+  Doctor.create!(speciality_id: id, 
+                 fees: Faker::Number.within(range: 100..300),
+                 years_of_experience: Faker::Number.within(range: 1..20))
+end
+p "\n Doctors created \n"
 
 
-# doctors Accounts
 ActiveRecord::Base.connection.reset_pk_sequence!('accounts')
-accounts = Account.create(
-  [
-    { first_name: Faker::Name.name.split.last, last_name: Faker::Name.name.split.last, email: Faker::Internet.unique.email, password: Faker::Internet.password, role: Doctor.find(1) },
-    { first_name: Faker::Name.name.split.last, last_name: Faker::Name.name.split.last, email: Faker::Internet.unique.email, password: Faker::Internet.password, role: Doctor.find(2) },
-    { first_name: Faker::Name.name.split.last, last_name: Faker::Name.name.split.last, email: Faker::Internet.unique.email, password: Faker::Internet.password, role: Doctor.find(3) },
-    { first_name: Faker::Name.name.split.last, last_name: Faker::Name.name.split.last, email: Faker::Internet.unique.email, password: Faker::Internet.password, role: Doctor.find(4) },
-    { first_name: Faker::Name.name.split.last, last_name: Faker::Name.name.split.last, email: Faker::Internet.unique.email, password: Faker::Internet.password, role: Doctor.find(5) },
-    { first_name: Faker::Name.name.split.last, last_name: Faker::Name.name.split.last, email: Faker::Internet.unique.email, password: Faker::Internet.password, role: Doctor.find(6) },
-    { first_name: Faker::Name.name.split.last, last_name: Faker::Name.name.split.last, email: Faker::Internet.unique.email, password: Faker::Internet.password, role: Doctor.find(7) },
-    { first_name: Faker::Name.name.split.last, last_name: Faker::Name.name.split.last, email: Faker::Internet.unique.email, password: Faker::Internet.password, role: Doctor.find(8) },
-    { first_name: Faker::Name.name.split.last, last_name: Faker::Name.name.split.last, email: Faker::Internet.unique.email, password: Faker::Internet.password, role: Doctor.find(9) },
-    { first_name: Faker::Name.name.split.last, last_name: Faker::Name.name.split.last, email: Faker::Internet.unique.email, password: Faker::Internet.password, role: Doctor.find(10) }
-  ])
+(1..80).each do |i|
+  Account.create!(first_name: Faker::Name.first_name,
+                  last_name: Faker::Name.last_name,
+                  email: Faker::Internet.unique.email,
+                  password: Faker::Internet.password,
+                  role: Doctor.find(i))
+end
+p "\n Doctor Accounts created \n"

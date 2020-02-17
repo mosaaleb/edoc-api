@@ -3,10 +3,10 @@
 class Speciality < ApplicationRecord
   has_many :doctors, dependent: :destroy
 
-  validates :name, presence: true
+  validates :speciality, presence: true
 
   def self.special_in(speciality)
-    where(name: speciality)
+    where(speciality: speciality)
   end
 
   def self.special_in_id(speciality_id)

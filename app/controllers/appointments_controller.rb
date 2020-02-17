@@ -1,25 +1,39 @@
 # frozen_string_literal: true
 
 class AppointmentsController < ApplicationController
-  skip_before_action :authorize_request
+  def index
+    appointments = current_user.appointments
+    render json: appointments
+  end
 
   def create
-    Appointment.create!(appointment_params)
-
+    current_user.appointments.create!(appointment_params)
     res = {
-      message: "Appointment with Doctor #{doctor_name}"
+      message: "Appointment with Dr.#{doctor_name} is scheduled"
     }
-
     render json: res, status: :created
+  end
+
+  def destroy
+    appointment = Appointment.find(params[:id])
+    appointment.destroy
+    res = {
+      message: "Appointment with Dr.#{appointment.doctor.full_name} is canceled"
+    }
+    render json: res, status: :ok
   end
 
   private
 
   def appointment_params
-    params.require(:appointment).permit(:patient_id, :doctor_id, :date)
+    params.require(:appointment).permit(:doctor_id, :date)
+  end
+
+  def appointment
+    Appointment.find(params[:id])
   end
 
   def doctor_name
-    Doctor.find(params[:appointment][:doctor_id]).account.full_name
+    Doctor.find(params[:appointment][:doctor_id]).full_name
   end
 end
