@@ -8,13 +8,14 @@ It serves front end react application
 react app: [edoc](https://github.com/mosaaleb/edoc/)
 
 **Features**
+- Mobile app
 - Authentication with JWT
 - Filtering physicians by category
 - Creating appointments with physicians
-- Mobile app
 
 ## Built With
 - Rails 6.0.2
+- Rspec
 
 ### Prerequisites
 - ruby 2.6.3
@@ -27,14 +28,10 @@ cd edoc
 rails db:create db:migrate db:seed
 ```
 
-
 ## Author
 
-👤 **Author1**
-
-- Github: [@githubhandle](https://github.com/mosaaleb)
-- Twitter: [@twitterhandle](https://twitter.com/muhammadebeid)
-- Linkedin: [linkedin](https://www.linkedin.com/in/muhammadebeid/)
+- [Github](https://github.com/mosaaleb)
+- [Linkedin](https://www.linkedin.com/in/muhammadebeid/)
 
 ## 🤝 Contributing
 
