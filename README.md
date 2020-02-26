@@ -28,10 +28,20 @@ cd edoc
 rails db:create db:migrate db:seed
 ```
 
+
+### Testing
+The app is fully tested with `1:1.2` Code to Test Ratio
+You can run all unit tests with:
+`rspec`
+
 ## Author
 
 - [Github](https://github.com/mosaaleb)
 - [Linkedin](https://www.linkedin.com/in/muhammadebeid/)
+
+## Coming Features:
+- [ ] Doctor profile page endpoint
+**Having specific feature in mind?** Please [Submit](https://github.com/mosaaleb/edoc-api/labels/enhancement) it
 
 ## 🤝 Contributing
 
