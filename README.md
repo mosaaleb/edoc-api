@@ -1,10 +1,13 @@
-# Edoc-api
+# Edoc-api 
+
+Check out [front end](https://github.com/mosaaleb/edoc)
 
 ## Introduction
 This is part of two part project in [Microverse](https://www.microverse.org/) curriculum
 The project handle searching physicians by their speciality and handles creating appointments with patients.
 
 It serves front end react application
+
 react app: [edoc](https://github.com/mosaaleb/edoc/)
 
 **Features**
@@ -41,6 +44,7 @@ You can run all unit tests with:
 
 ## Coming Features:
 - [ ] Doctor profile page endpoint
+
 **Having specific feature in mind?** Please [Submit](https://github.com/mosaaleb/edoc-api/labels/enhancement) it
 
 ## 🤝 Contributing
