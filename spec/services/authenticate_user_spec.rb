@@ -7,7 +7,7 @@ RSpec.describe AuthenticateUser do
   let(:account) { create(:account, :for_patient) }
   let(:no_account) { build(:account, :for_patient) }
 
-  describe '#call' do
+  describe '::call' do
     context 'when valid credentials' do
       it 'returns auth token' do
         token = described_class.call(account.email, account.password)
