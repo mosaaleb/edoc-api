@@ -55,5 +55,10 @@ RSpec.describe Doctor, type: :model do
       expect(described_class.search_with_name(doctor.first_name).count)
         .to eq 1
     end
+
+    it 'case insensitive search' do
+      expect(described_class.search_with_name('Courtney').to_sql)
+        .to include('lower')
+    end
   end
 end

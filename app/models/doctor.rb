@@ -29,6 +29,7 @@ class Doctor < ApplicationRecord
 
   def self.search_with_name(name)
     joins(:account)
-      .where('accounts.first_name = ? OR accounts.last_name = ?', name, name)
+      .where('lower(accounts.first_name) = ? OR lower(accounts.last_name) = ?',
+             name.downcase, name.downcase)
   end
 end
