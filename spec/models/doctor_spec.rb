@@ -47,4 +47,13 @@ RSpec.describe Doctor, type: :model do
         .to eq(general_doctors)
     end
   end
+
+  describe '::search_with_name' do
+    let(:doctor) { create(:doctor_with_account) }
+
+    it 'returns all doctors with their first or last name equal search param' do
+      expect(described_class.search_with_name(doctor.first_name).count)
+        .to eq 1
+    end
+  end
 end
