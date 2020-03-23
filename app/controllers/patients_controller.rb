@@ -23,9 +23,9 @@ class PatientsController < ApplicationController
   def patient_params
     params.require(:patient)
           .permit(account_attributes: %i[email
-                                         first_name
-                                         last_name
                                          password
+                                         last_name
+                                         first_name
                                          password_confirmation])
   end
 end

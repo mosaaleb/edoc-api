@@ -3,8 +3,8 @@
 namespace :seeds do
   desc 'generate initial avatars for seeded data'
   task generate_initial_avatars: :environment do
-    Account.all.each do |account|
-      AvatarGenerator.call(account)
+    Account.find_each do |doctor|
+      AvatarGenerator.call(doctor)
       print '.'
     end
 

@@ -10,11 +10,9 @@ class Account < ApplicationRecord
   validates :password, length: { minimum: 6, maximum: 30 }
   validates :first_name, :last_name, length: { minimum: 2, maximum: 20 }
 
-  # associations
   belongs_to :role, polymorphic: true
   has_one_attached :avatar
 
-  # class methods
   def self.doctors
     where(role_type: 'Doctor')
   end
@@ -23,7 +21,6 @@ class Account < ApplicationRecord
     where(role_type: 'Patient')
   end
 
-  # instance methods
   def full_name
     "#{first_name} #{last_name}"
   end

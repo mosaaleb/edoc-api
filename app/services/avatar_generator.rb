@@ -21,9 +21,19 @@ class AvatarGenerator
 
   def call
     generate_image
-    account.avatar.attach(io: File.open('default.jpg'),
-                          filename: "#{account.first_name}-default.jpg",
-                          content_type: 'image/jpg')
+    # account.avatar.attach(io: File.open('default.jpeg'),
+    #   filename: "#{account.first_name}-default.jpeg"
+    # )
+
+    blob = ActiveStorage::Blob.create_and_upload!(
+      io: File.open('default.jpeg'),
+      filename: "#{account.first_name}-default.jpeg",
+      content_type: 'image/jpeg'
+    )
+
+    ActiveStorage::Attachment.create(name: 'avatar',
+                                     record: account,
+                                     blob_id: blob.id)
 
     clean
   end
@@ -39,7 +49,7 @@ class AvatarGenerator
       image.pointsize 100
       image.fill AVATAR_COLORS.values[rand]
       image.draw "text 0,0 #{initial_letters}"
-      image << 'default.jpg'
+      image << 'default.jpeg'
     end
   end
 
@@ -48,6 +58,6 @@ class AvatarGenerator
   end
 
   def clean
-    File.delete('default.jpg')
+    File.delete('default.jpeg')
   end
 end
