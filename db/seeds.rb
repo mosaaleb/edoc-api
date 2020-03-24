@@ -6,7 +6,8 @@
 require 'faker'
 
 ActiveRecord::Base.connection.reset_pk_sequence!('specialities')
-specialities = Speciality.create!([{ speciality: 'General Doctor' },
+specialities = Speciality.create!([
+                                  { speciality: 'General Doctor' },
                                   { speciality: 'Skin & Hair' },
                                   { speciality: 'Child Care' },
                                   { speciality: 'Women\'s Health' },
@@ -15,7 +16,8 @@ specialities = Speciality.create!([{ speciality: 'General Doctor' },
                                   { speciality: 'Homeopathy' },
                                   { speciality: 'Ayurveda' },
                                   { speciality: 'Cardiac' },
-                                  { speciality: 'Psychiatry' }])
+                                  { speciality: 'Psychiatry' }]
+                                )
 p "\n Specialities created \n"
 
 ActiveRecord::Base.connection.reset_pk_sequence!('doctors')

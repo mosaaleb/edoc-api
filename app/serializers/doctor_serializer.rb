@@ -1,14 +1,21 @@
 # frozen_string_literal: true
 
 class DoctorSerializer < ActiveModel::Serializer
+  include Rails.application.routes.url_helpers
+
   attributes :id,
              :fees,
-             :first_name,
              :last_name,
-             :years_of_experience,
-             :speciality
+             :first_name,
+             :avatar_url,
+             :speciality,
+             :years_of_experience
 
   def speciality
     object.speciality.speciality
+  end
+
+  def avatar_url
+    polymorphic_url(object.avatar, host: 'localhost:3000')
   end
 end

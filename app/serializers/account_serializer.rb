@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class AccountSerializer < ActiveModel::Serializer
-  attributes :first_name,
-             :last_name
+  attributes :avatar,
+             :last_name,
+             :first_name
 end
