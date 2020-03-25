@@ -41,6 +41,7 @@ You can run all unit tests with:
 
 - [Github](https://github.com/mosaaleb)
 - [Linkedin](https://www.linkedin.com/in/muhammadebeid/)
+- [muhammed.ebeid@gmail.com](muhammed.ebeid@gmail.com)
 
 ## Coming Features:
 - [ ] Doctor profile page endpoint
