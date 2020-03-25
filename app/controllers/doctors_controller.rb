@@ -5,12 +5,20 @@ class DoctorsController < ApplicationController
     render json: doctors
   end
 
+  def show
+    render json: doctor
+  end
+
   private
 
   def query_params
     params.permit(:speciality, :name,
                   :fees_from, :fees_to,
                   :experience_from, :experience_to)
+  end
+
+  def doctor
+    @doctor ||= Doctor.find(params[:id])
   end
 
   def doctors

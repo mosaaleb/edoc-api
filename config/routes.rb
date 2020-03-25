@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   resources :specialities, only: [:index]
 
   resources :specialities do
-    resources :doctors, only: [:index]
+    resources :doctors, only: %i[index show]
   end
 
   resources :patients, only: [:create]
