@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_01_192720) do
+ActiveRecord::Schema.define(version: 2020_03_25_230440) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -62,7 +62,6 @@ ActiveRecord::Schema.define(version: 2020_02_01_192720) do
   create_table "doctor_likes", force: :cascade do |t|
     t.bigint "doctor_id", null: false
     t.bigint "patient_id", null: false
-    t.integer "count"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["doctor_id", "patient_id"], name: "index_doctor_likes_on_doctor_id_and_patient_id", unique: true
