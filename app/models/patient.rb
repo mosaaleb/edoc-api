@@ -7,4 +7,8 @@ class Patient < ApplicationRecord
   has_many :appointed_doctors, through: :appointments, source: :doctor
   has_many :doctor_likes, dependent: :destroy
   has_many :liked_doctors, through: :doctor_likes, source: :doctor
+
+  def liked?(doctor)
+    liked_doctors.include? doctor
+  end
 end
