@@ -2,7 +2,11 @@
 
 Rails.application.routes.draw do
   post 'authenticate', to: 'authentications#authenticate'
-  resources :doctors, only: %i[index show]
+  resources :doctors, only: %i[index show] do
+    member do
+      post 'like', to: 'doctor_likes#create'
+    end
+  end
   resources :specialities, only: [:index]
 
   resources :specialities do

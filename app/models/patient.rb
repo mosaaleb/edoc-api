@@ -11,4 +11,12 @@ class Patient < ApplicationRecord
   def liked?(doctor)
     liked_doctors.include? doctor
   end
+
+  def likes(doctor)
+    liked_doctors << doctor
+  end
+
+  def dislikes(doctor)
+    liked_doctors.destroy(doctor)
+  end
 end
