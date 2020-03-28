@@ -9,6 +9,8 @@ class DoctorSerializer < ActiveModel::Serializer
              :likes_count, :years_of_experience,
              :reviews
 
+  has_many :reviews, class_name: 'DoctorReview'
+
   def speciality
     object.speciality.speciality
   end
