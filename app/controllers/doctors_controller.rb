@@ -2,7 +2,7 @@
 
 class DoctorsController < ApplicationController
   def index
-    render json: doctors
+    render json: doctors, each_serializer: DoctorsSerializer
   end
 
   def show

@@ -1,13 +1,12 @@
 # frozen_string_literal: true
 
-class DoctorSerializer < ActiveModel::Serializer
+class DoctorsSerializer < ActiveModel::Serializer
   include Rails.application.routes.url_helpers
 
   attributes :id, :fees, :liked,
              :last_name, :first_name,
              :avatar_url, :speciality,
-             :likes_count, :years_of_experience,
-             :reviews
+             :likes_count, :years_of_experience
 
   def speciality
     object.speciality.speciality

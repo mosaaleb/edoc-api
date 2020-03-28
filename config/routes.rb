@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :doctors, only: %i[index show] do
     member do
       post 'like', to: 'doctor_likes#create'
+      delete 'dislike', to: 'doctor_likes#destroy'
     end
   end
   resources :specialities, only: [:index]
