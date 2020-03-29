@@ -4,10 +4,9 @@ class DoctorSerializer < ActiveModel::Serializer
   include Rails.application.routes.url_helpers
 
   attributes :id, :fees, :liked,
-             :last_name, :first_name,
              :avatar_url, :speciality,
              :likes_count, :years_of_experience,
-             :reviews
+             :reviews, :full_name
 
   has_many :reviews, class_name: 'DoctorReview'
 
