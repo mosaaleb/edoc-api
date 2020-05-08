@@ -1,5 +1,7 @@
 # Edoc-api 
 
+![screenshot](screenshot.jpg)
+
 Check out [front end](https://github.com/mosaaleb/edoc)
 
 ## Introduction
@@ -31,6 +33,18 @@ cd edoc
 rails db:create db:migrate db:seed
 ```
 
+### Running the project
+- Clone the [front end](https://github.com/mosaaleb/edoc).
+- Follow the instruction on how to setup the front end.
+- Setup the back end part (check the Setup section).
+- Start the server on both back end and front end.
+```ruby
+# back end rails
+rails s
+# front end react
+npm start
+```
+- Start developing.
 
 ### Testing
 The app is fully tested with `1:1.2` Code to Test Ratio
@@ -46,10 +60,11 @@ You can run all unit tests with:
 ## Coming Features:
 - [ ] Doctor profile page endpoint
 
-**Having specific feature in mind?** Please [Submit](https://github.com/mosaaleb/edoc-api/labels/enhancement) it
+**Having specific feature in mind?** 
+Please [Submit](https://github.com/mosaaleb/edoc-api/labels/enhancement) it
+
 
 ## 🤝 Contributing
-
 Contributions, issues and feature requests are welcome!
 
 Feel free to check the [issues page](issues/).
