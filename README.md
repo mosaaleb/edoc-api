@@ -1,22 +1,23 @@
-# Edoc-api 
+# Edoc-API 
 
 ![screenshot](screenshot.jpg)
 
 Check out [front end](https://github.com/mosaaleb/edoc)
 
 ## Introduction
-This is part of two part project in [Microverse](https://www.microverse.org/) curriculum
-The project handle searching physicians by their speciality and handles creating appointments with patients.
+This is the backend of the capstone project in [Microverse](https://www.microverse.org/) curriculum
+The project handles searching physicians by their specialty and handles creating appointments with patients.
 
-It serves front end react application
+It serves frontend React application
 
 react app: [edoc](https://github.com/mosaaleb/edoc/)
 
 **Features**
-- Mobile app
-- Authentication with JWT
-- Filtering physicians by category
-- Creating appointments with physicians
+- Mobile app.
+- Authentication with JWT.
+- Filtering physicians by category.
+- Creating appointments with physicians.
+- Leaving upvotes and reviews.
 
 ## Built With
 - Rails 6.0.2
@@ -35,11 +36,11 @@ rails db:create db:migrate db:seed
 
 ### Running the project
 - Clone the [front end](https://github.com/mosaaleb/edoc).
-- Follow the instruction on how to setup the front end.
+- Follow the instruction on how to set up the frontend.
 - Setup the back end part (check the Setup section).
-- Start the server on both back end and front end.
+- Start the server on both the backend and frontend.
 ```ruby
-# back end rails
+# back end Rails
 rails s
 # front end react
 npm start
@@ -60,12 +61,12 @@ You can run all unit tests with:
 ## Coming Features:
 - [ ] Doctor profile page endpoint
 
-**Having specific feature in mind?** 
+**Having a specific feature in mind?** 
 Please [Submit](https://github.com/mosaaleb/edoc-api/labels/enhancement) it
 
 
 ## 🤝 Contributing
-Contributions, issues and feature requests are welcome!
+Contributions, issues, and feature requests are welcome!
 
 Feel free to check the [issues page](issues/).
 
